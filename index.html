@@ -2,25 +2,52 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
+    <!-- MOBILE RESPONSIVE -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Arjun | Creative Developer</title>
+
     <link rel="stylesheet" href="style.css">
+
+    <!-- BOXICONS -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- PARTICLES FIX -->
+    <style>
+        #particles-canvas{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -3;
+            pointer-events: none;
+        }
+    </style>
+
 </head>
+
 <body>
 
+    <!-- NOISE -->
     <div class="noise-overlay"></div>
     <div class="vignette"></div>
 
+    <!-- BLOBS -->
     <div class="blob-cont">
         <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
         <div class="blob blob-3"></div>
     </div>
 
+    <!-- PRELOADER -->
     <div class="preloader">
         <div class="loader-content">
             <span class="loader-text">Arjun.</span>
@@ -28,228 +55,382 @@
         </div>
     </div>
 
+    <!-- CURSOR -->
     <div class="cursor-dot" data-cursor-dot></div>
     <div class="cursor-outline" data-cursor-outline></div>
 
+    <!-- PARTICLES -->
     <canvas id="particles-canvas"></canvas>
 
+    <!-- HEADER -->
     <header class="glass-header" id="header">
+
         <nav class="nav container">
-            <a href="#" class="logo hacker-effect" data-value="ARJUN.">ARJUN.</a>
-            
+
+            <a href="#" class="logo hacker-effect" data-value="ARJUN.">
+                ARJUN.
+            </a>
+
+            <!-- NAV MENU -->
             <div class="nav-menu" id="nav-menu">
-                <a href="#home" class="nav-link active-link">Home</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#skills" class="nav-link">Expertise</a>
-                <a href="#libraries" class="nav-link">Libraries</a>
-                <a href="#contact" class="nav-link contact-btn magnetic">Let's Talk</a>
-                <div class="close-menu"><i class='bx bx-x'></i></div>
+
+                <a href="#home" class="nav-link active-link">
+                    Home
+                </a>
+
+                <a href="#about" class="nav-link">
+                    About
+                </a>
+
+                <a href="#skills" class="nav-link">
+                    Expertise
+                </a>
+
+                <a href="#libraries" class="nav-link">
+                    Libraries
+                </a>
+
+                <a href="#contact" class="nav-link contact-btn magnetic">
+                    Let's Talk
+                </a>
+
+                <!-- CLOSE MENU -->
+                <div class="close-menu" id="nav-close">
+                    <i class='bx bx-x'></i>
+                </div>
+
             </div>
-            <div class="toggle-menu" id="nav-toggle"><i class='bx bx-menu-alt-right'></i></div>
+
+            <!-- TOGGLE -->
+            <div class="toggle-menu" id="nav-toggle">
+                <i class='bx bx-menu-alt-right'></i>
+            </div>
+
         </nav>
+
         <div class="scroll-progress"></div>
+
     </header>
 
+    <!-- COVER PAGE -->
     <section class="cover-page">
+
         <div class="cover-content">
-            <h1 class="giant-text parallax" data-speed="0.2">PORTFOLIO</h1>
-            <p class="cover-subtitle parallax" data-speed="0.1">Created by Arjun</p>
-            
+
+            <h1 class="giant-text parallax" data-speed="0.2">
+                PORTFOLIO
+            </h1>
+
+            <p class="cover-subtitle parallax" data-speed="0.1">
+                Created by Arjun
+            </p>
+
             <div class="scroll-indicator-wrapper">
+
                 <div class="mouse-icon"></div>
-                <span>Scroll to Explore</span>
+
+                <span>
+                    Scroll to Explore
+                </span>
+
             </div>
+
         </div>
+
     </section>
 
+    <!-- HERO -->
     <section class="hero" id="home">
+
         <div class="container hero-grid">
+
             <div class="hero-text reveal-group">
-                <div class="badge reveal-item">Available for work</div>
-                <h1 class="reveal-item">Creative <br> <span class="gradient-text hacker-effect" data-value="Developer">Developer</span></h1>
-                <p class="typing-wrapper reveal-item">Crafting <span class="typewriter"></span><span class="cursor">|</span></p>
-                
-                <div class="hero-btns reveal-item">
-                    <a href="#libraries" class="btn primary magnetic">Libraries & Platforms <i class='bx bx-right-arrow-alt'></i></a>
-                    <a href="#contact" class="btn secondary magnetic">Contact Me</a>
+
+                <div class="badge reveal-item">
+                    Available for work
                 </div>
 
+                <h1 class="reveal-item">
+                    Creative <br>
+
+                    <span class="gradient-text hacker-effect" data-value="Developer">
+                        Developer
+                    </span>
+                </h1>
+
+                <p class="typing-wrapper reveal-item">
+                    Crafting
+                    <span class="typewriter"></span>
+                    <span class="cursor">|</span>
+                </p>
+
+                <!-- BUTTONS -->
+                <div class="hero-btns reveal-item">
+
+                    <a href="#libraries" class="btn primary magnetic">
+                        Libraries & Platforms
+                        <i class='bx bx-right-arrow-alt'></i>
+                    </a>
+
+                    <a href="#contact" class="btn secondary magnetic">
+                        Contact Me
+                    </a>
+
+                </div>
+
+                <!-- SOCIALS -->
                 <div class="socials reveal-item">
-                    <a href="#" class="magnetic"><i class='bx bxl-github'></i></a>
-                    <a href="https://www.linkedin.com/feed/" class="magnetic"><i class='bx bxl-linkedin'></i></a>
-                    <a href="#" class="magnetic"><i class='bx bxl-dribbble'></i></a>
+
+                    <a href="#" class="magnetic">
+                        <i class='bx bxl-github'></i>
+                    </a>
+
+                    <a href="https://www.linkedin.com/feed/" class="magnetic">
+                        <i class='bx bxl-linkedin'></i>
+                    </a>
+
+                    <a href="#" class="magnetic">
+                        <i class='bx bxl-dribbble'></i>
+                    </a>
+
                 </div>
+
             </div>
-            
+
+            <!-- IMAGE -->
             <div class="hero-visual reveal-item" id="tilt-card">
+
                 <div class="glass-card profile-card">
-                    <img src="my_pic.jpg" alt="Arjun" class="profile-img">
+
+                    <img
+                        src="my_pic.jpg"
+                        alt="Arjun"
+                        class="profile-img"
+                        loading="lazy"
+                    >
+
                     <div class="glow-effect"></div>
-                    <div class="floating-badge badge-1"><i class='bx bx-code-alt'></i> Coder</div>
-                    <div class="floating-badge badge-2"><i class='bx bxs-palette'></i> Artist</div>
+
+                    <div class="floating-badge badge-1">
+                        <i class='bx bx-code-alt'></i>
+                        Coder
+                    </div>
+
+                    <div class="floating-badge badge-2">
+                        <i class='bx bxs-palette'></i>
+                        Artist
+                    </div>
+
                 </div>
+
             </div>
+
         </div>
+
     </section>
 
+    <!-- MARQUEE -->
     <div class="marquee-strip">
+
         <div class="marquee-content">
-            <span class="outline">INTERACTIVE</span> <span class="filled">DEVELOPER</span>
-            <span class="outline">CREATIVE</span> <span class="filled">DESIGNER</span>
-            <span class="outline">MODERN</span> <span class="filled">SOLUTIONS</span>
+
+            <span class="outline">INTERACTIVE</span>
+            <span class="filled">DEVELOPER</span>
+
+            <span class="outline">CREATIVE</span>
+            <span class="filled">DESIGNER</span>
+
+            <span class="outline">MODERN</span>
+            <span class="filled">SOLUTIONS</span>
+
         </div>
+
     </div>
 
+    <!-- ABOUT -->
     <section class="about section" id="about">
+
         <div class="container">
-            <h2 class="section-title reveal">My <span class="gradient-text">Narrative</span></h2>
+
+            <h2 class="section-title reveal">
+                My <span class="gradient-text">Narrative</span>
+            </h2>
+
             <div class="glass-card reveal about-card">
+
                 <div class="about-content">
-                    <p class="big-p">I bridge the gap between <span class="highlight">Engineering</span> and <span class="highlight">Art</span>.</p>
-                    <p>With a focus on interaction and typography, I build websites that feel alive. I don't just write code; I orchestrate pixels to create memorable digital journeys.</p>
+
+                    <p class="big-p">
+                        I bridge the gap between
+                        <span class="highlight">Engineering</span>
+                        and
+                        <span class="highlight">Art</span>.
+                    </p>
+
+                    <p>
+                        With a focus on interaction and typography,
+                        I build websites that feel alive.
+                        I don't just write code;
+                        I orchestrate pixels to create memorable digital journeys.
+                    </p>
+
                     <div class="stats-grid">
-                        <div class="stat"><h3>01+</h3><p>Years</p></div>
-                        <div class="stat"><h3>5+</h3><p>Projects</p></div>
-                        <div class="stat"><h3>100%</h3><p>Passion</p></div>
+
+                        <div class="stat">
+                            <h3>01+</h3>
+                            <p>Years</p>
+                        </div>
+
+                        <div class="stat">
+                            <h3>5+</h3>
+                            <p>Projects</p>
+                        </div>
+
+                        <div class="stat">
+                            <h3>100%</h3>
+                            <p>Passion</p>
+                        </div>
+
                     </div>
+
                 </div>
+
             </div>
+
         </div>
+
     </section>
 
+    <!-- SKILLS -->
     <section class="skills section" id="skills">
+
         <div class="container">
-            <h2 class="section-title reveal">Tech <span class="gradient-text">Arsenal</span></h2>
+
+            <h2 class="section-title reveal">
+                Tech <span class="gradient-text">Arsenal</span>
+            </h2>
+
             <div class="cards-wrapper" id="cards-wrapper">
-                <div class="spotlight-card reveal" data-glow="rgba(227, 76, 38, 0.3)">
+
+                <div class="spotlight-card reveal">
                     <div class="spotlight-content">
-                        <i class='bx bxl-html5 skill-icon' style="color: #e34c26;"></i>
+                        <i class='bx bxl-html5 skill-icon' style="color:#e34c26;"></i>
                         <h3>HTML5</h3>
                     </div>
                 </div>
-                <div class="spotlight-card reveal" data-glow="rgba(38, 77, 228, 0.3)">
+
+                <div class="spotlight-card reveal">
                     <div class="spotlight-content">
-                        <i class='bx bxl-css3 skill-icon' style="color: #264de4;"></i>
+                        <i class='bx bxl-css3 skill-icon' style="color:#264de4;"></i>
                         <h3>CSS3</h3>
                     </div>
                 </div>
-                <div class="spotlight-card reveal" data-glow="rgba(240, 219, 79, 0.3)">
+
+                <div class="spotlight-card reveal">
                     <div class="spotlight-content">
-                        <i class='bx bxl-javascript skill-icon' style="color: #f0db4f;"></i>
-                        <h3>JS</h3>
+                        <i class='bx bxl-javascript skill-icon' style="color:#f0db4f;"></i>
+                        <h3>JavaScript</h3>
                     </div>
                 </div>
-                <div class="spotlight-card reveal" data-glow="rgba(0, 122, 204, 0.3)">
+
+                <div class="spotlight-card reveal">
                     <div class="spotlight-content">
-                        <i class='bx bxl-c-plus-plus skill-icon' style="color: #00599C;"></i>
-                        <h3>C++</h3>
-                    </div>
-                </div>
-                <div class="spotlight-card reveal" data-glow="rgba(53, 114, 165, 0.3)">
-                    <div class="spotlight-content">
-                        <i class='bx bxl-python skill-icon' style="color: #306998;"></i>
+                        <i class='bx bxl-python skill-icon' style="color:#306998;"></i>
                         <h3>Python</h3>
                     </div>
                 </div>
+
             </div>
+
         </div>
+
     </section>
 
-    <!-- NEW LIBRARIES & PLATFORMS SECTION -->
-    <section class="libraries section" id="libraries">
-        <div class="container">
-            <h2 class="section-title reveal">Libraries & <span class="gradient-text">Platforms</span></h2>
-            <div class="cards-wrapper">
-                <!-- Libraries -->
-                <div class="spotlight-card reveal" data-glow="rgba(54, 162, 235, 0.3)">
-                    <div class="spotlight-content">
-                        <i class='bx bxl-python skill-icon' style="color: #306998;"></i>
-                        <h3>NumPy</h3>
-                    </div>
-                </div>
-                <div class="spotlight-card reveal" data-glow="rgba(255, 206, 86, 0.3)">
-                    <div class="spotlight-content">
-                        <i class='bx bxl-python skill-icon' style="color: #306998;"></i>
-                        <h3>Pandas</h3>
-                    </div>
-                </div>
-                <div class="spotlight-card reveal" data-glow="rgba(75, 192, 192, 0.3)">
-                    <div class="spotlight-content">
-                        <i class='bx bxl-python skill-icon' style="color: #f05033;"></i>
-                        <h3>Matplotlib</h3>
-                    </div>
-                </div>
-                <div class="spotlight-card reveal" data-glow="rgba(153, 102, 255, 0.3)">
-                    <div class="spotlight-content">
-                        <i class='bx bxl-python skill-icon' style="color: #f0db4f;"></i>
-                        <h3>Scikit-Learn</h3>
-                    </div>
-                </div>
-                <div class="spotlight-card reveal" data-glow="rgba(255, 99, 132, 0.3)">
-                    <div class="spotlight-content">
-                        <i class='bx bxl-python skill-icon' style="color: #092E20;"></i>
-                        <h3>Django</h3>
-                    </div>
-                </div>
-                <div class="spotlight-card reveal" data-glow="rgba(255, 159, 64, 0.3)">
-                    <div class="spotlight-content">
-                        <i class='bx bxl-python skill-icon' style="color: #EE4C2C;"></i>
-                        <h3>PyTorch</h3>
-                    </div>
-                </div>
-                <!-- Platforms / Tools -->
-                <div class="spotlight-card reveal" data-glow="rgba(255, 99, 255, 0.3)">
-                    <div class="spotlight-content">
-                        <h3>LangChain</h3>
-                    </div>
-                </div>
-                <div class="spotlight-card reveal" data-glow="rgba(0, 200, 200, 0.3)">
-                    <div class="spotlight-content">
-                        <h3>OpenCV</h3>
-                    </div>
-                </div>
-                <div class="spotlight-card reveal" data-glow="rgba(200, 0, 200, 0.3)">
-                    <div class="spotlight-content">
-                        <h3>CVZone</h3>
-                    </div>
-                </div>
-                <div class="spotlight-card reveal" data-glow="rgba(255, 150, 0, 0.3)">
-                    <div class="spotlight-content">
-                        <h3>YOLOv8</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
+    <!-- CONTACT -->
     <section class="contact section" id="contact">
+
         <div class="container contact-container">
+
             <div class="glass-card contact-box reveal">
-                <h2>Ready to <span class="gradient-text">Collaborate?</span></h2>
-                <p>Let's build something future-proof.</p>
+
+                <h2>
+                    Ready to
+                    <span class="gradient-text">Collaborate?</span>
+                </h2>
+
+                <p>
+                    Let's build something future-proof.
+                </p>
+
                 <form class="contact-form">
+
                     <div class="input-group">
                         <input type="text" required>
                         <label>Your Name</label>
                     </div>
+
                     <div class="input-group">
                         <input type="email" required>
                         <label>Your Email</label>
                     </div>
+
                     <div class="input-group">
                         <textarea rows="4" required></textarea>
                         <label>Tell me about the project</label>
                     </div>
-                    <button type="submit" class="btn primary magnetic">Send Message <i class='bx bx-send'></i></button>
+
+                    <button type="submit" class="btn primary magnetic">
+                        Send Message
+                        <i class='bx bx-send'></i>
+                    </button>
+
                 </form>
+
             </div>
+
         </div>
+
     </section>
 
+    <!-- FOOTER -->
     <footer class="footer">
-        <p>&copy; 2025 Arjun. <span style="opacity:0.5">Built with Passion.</span></p>
+        <p>
+            &copy; 2025 Arjun.
+            <span style="opacity:0.5">
+                Built with Passion.
+            </span>
+        </p>
     </footer>
 
+    <!-- SCRIPT -->
     <script src="script.js"></script>
+
+    <!-- MOBILE MENU -->
+    <script>
+
+        const navMenu = document.getElementById('nav-menu');
+        const navToggle = document.getElementById('nav-toggle');
+        const navClose = document.getElementById('nav-close');
+
+        if(navToggle){
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.add('show');
+            });
+        }
+
+        if(navClose){
+            navClose.addEventListener('click', () => {
+                navMenu.classList.remove('show');
+            });
+        }
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('show');
+            });
+        });
+
+    </script>
+
 </body>
 </html>
