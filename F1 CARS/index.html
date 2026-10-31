@@ -1,0 +1,201 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>F1 ULTIMATE GARAGE</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Syncopate:wght@700&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- Background Layers -->
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">GRAND PRIX</div>
+
+    <div class="counter">
+      <span id="current-num">01</span>
+      <span class="divider">/</span>
+      <span id="total-num">08</span>
+    </div>
+  </nav>
+
+  <!-- SLIDER -->
+  <section class="slider">
+
+    <!-- Slide 1 -->
+    <article class="slide active" style="--accent:#ff1a1a;">
+      <div class="watermark">FERRARI</div>
+
+      <div class="content">
+        <img src="ferrari.jpg" class="car-img" alt="Ferrari"/>
+
+        <div class="info">
+          <h2 class="team">SCUDERIA FERRARI</h2>
+          <h1 class="model scramble">SF-24</h1>
+
+          <div class="stats">
+            <div class="stat"><span>DRIVER</span>LECLERC</div>
+            <div class="stat"><span>POWER</span>1000 HP</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Slide 2 -->
+    <article class="slide" style="--accent:#00ffd5;">
+      <div class="watermark">MERCEDES</div>
+
+      <div class="content">
+        <img src="mercedes.jpg" class="car-img" alt="Mercedes"/>
+
+        <div class="info">
+          <h2 class="team">MERCEDES AMG</h2>
+          <h1 class="model scramble">W15</h1>
+
+          <div class="stats">
+            <div class="stat"><span>DRIVER</span>HAMILTON</div>
+            <div class="stat"><span>AERO</span>HIGH</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Slide 3 -->
+    <article class="slide" style="--accent:#1b2cff;">
+      <div class="watermark">RED BULL</div>
+
+      <div class="content">
+        <img src="redbull.jpg" class="car-img" alt="Red Bull"/>
+
+        <div class="info">
+          <h2 class="team">RED BULL RACING</h2>
+          <h1 class="model scramble">RB20</h1>
+
+          <div class="stats">
+            <div class="stat"><span>DRIVER</span>VERSTAPPEN</div>
+            <div class="stat"><span>RANK</span>CHAMPION</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Slide 4 -->
+    <article class="slide" style="--accent:#ff9100;">
+      <div class="watermark">MCLAREN</div>
+
+      <div class="content">
+        <img src="mclaren.jpg" class="car-img" alt="McLaren"/>
+
+        <div class="info">
+          <h2 class="team">MCLAREN F1</h2>
+          <h1 class="model scramble">MCL38</h1>
+
+          <div class="stats">
+            <div class="stat"><span>DRIVER</span>NORRIS</div>
+            <div class="stat"><span>PACE</span>RAPID</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Slide 5 -->
+    <article class="slide" style="--accent:#0099ff;">
+      <div class="watermark">ALPINE</div>
+
+      <div class="content">
+        <img src="alpine.jpg" class="car-img" alt="Alpine"/>
+
+        <div class="info">
+          <h2 class="team">BWT ALPINE</h2>
+          <h1 class="model scramble">A524</h1>
+
+          <div class="stats">
+            <div class="stat"><span>DRIVER</span>GASLY</div>
+            <div class="stat"><span>HQ</span>ENSTONE</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Slide 6 -->
+    <article class="slide" style="--accent:#2244ff;">
+      <div class="watermark">VCARB</div>
+
+      <div class="content">
+        <img src="racingbulloracle.jpg" class="car-img" alt="VCARB"/>
+
+        <div class="info">
+          <h2 class="team">VISA CASH APP RB</h2>
+          <h1 class="model scramble">VCARB 01</h1>
+
+          <div class="stats">
+            <div class="stat"><span>DRIVER</span>TSUNODA</div>
+            <div class="stat"><span>STYLE</span>BLUE</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Slide 7 -->
+    <article class="slide" style="--accent:#ff0000;">
+      <div class="watermark">HAAS</div>
+
+      <div class="content">
+        <img src="haas.jpg" class="car-img" alt="Haas"/>
+
+        <div class="info">
+          <h2 class="team">MONEYGRAM HAAS</h2>
+          <h1 class="model scramble">VF-24</h1>
+
+          <div class="stats">
+            <div class="stat"><span>DRIVER</span>HULKENBERG</div>
+            <div class="stat"><span>ENGINE</span>FERRARI</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Slide 8 -->
+    <article class="slide" style="--accent:#005aff;">
+      <div class="watermark">WILLIAMS</div>
+
+      <div class="content">
+        <img src="williams.jpg" class="car-img" alt="Williams"/>
+
+        <div class="info">
+          <h2 class="team">WILLIAMS RACING</h2>
+          <h1 class="model scramble">FW46</h1>
+
+          <div class="stats">
+            <div class="stat"><span>DRIVER</span>ALBON</div>
+            <div class="stat"><span>LEGACY</span>HISTORIC</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </section>
+
+  <!-- CONTROLS -->
+  <div class="controls">
+    <button id="prevBtn" class="btn">❮</button>
+
+    <div class="progress-wrap">
+      <div class="progress"></div>
+    </div>
+
+    <button id="nextBtn" class="btn">❯</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

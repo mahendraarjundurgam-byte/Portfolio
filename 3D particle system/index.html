@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Celestial Portfolio Node</title>
+    <style>
+        body { margin: 0; background: #000; overflow: hidden; font-family: 'Orbitron', sans-serif; }
+        #overlay { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #000; z-index: 2000; transition: 1.5s; }
+        button { background: none; border: 1px solid #00f2ff; color: #00f2ff; padding: 15px 40px; cursor: pointer; font-size: 14px; letter-spacing: 10px; transition: 0.5s; text-transform: uppercase; }
+        button:hover { background: #00f2ff; color: #000; box-shadow: 0 0 50px rgba(0, 242, 255, 0.6); }
+        #ui { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 100; pointer-events: none; text-align: center; }
+        #mode-text { font-size: 60px; text-transform: uppercase; letter-spacing: 15px; opacity: 0; transition: opacity 1s, transform 1s; color: #fff; font-weight: 900; text-shadow: 0 0 20px rgba(255,255,255,0.5); }
+        #v { display: none; }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="overlay">
+        <button id="start-btn">Initialize Interaction</button>
+    </div>
+
+    <div id="ui">
+        <div id="mode-text">STASIS</div>
+    </div>
+
+    <video id="v" autoplay playsinline></video>
+
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+    <script type="importmap"> { "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } } </script>
+
+    <script type="module">
+        import * as THREE from 'three';
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        document.body.appendChild(renderer.domElement);
+        camera.position.z = 200;
+
+        const count = 65000;
+        const geo = new THREE.BufferGeometry();
+        const pos = new Float32Array(count * 3);
+        const tar = new Float32Array(count * 3);
+        const col = new Float32Array(count * 3);
+
+        for(let i=0; i<count; i++) {
+            const i3 = i*3;
+            pos[i3] = (Math.random()-0.5)*1500; pos[i3+1] = (Math.random()-0.5)*1500; pos[i3+2] = (Math.random()-0.5)*1500;
+        }
+
+        geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+        geo.setAttribute('color', new THREE.BufferAttribute(col, 3));
+
+        const mat = new THREE.PointsMaterial({ 
+            size: 0.75, 
+            vertexColors: true, 
+            blending: THREE.AdditiveBlending, 
+            transparent: true, 
+            opacity: 0.85,
+            depthWrite: false 
+        });
+
+        const points = new THREE.Points(geo, mat);
+        scene.add(points);
+
+        function morph(type) {
+            const names = ['', 'LOTUS BLOOM', 'DNA HELIX', 'TRI-STAR', 'HYPERCUBE', 'DIVINE HEART', 'DOUBLE SATURN', 'GALAXY SPIRAL', 'NEURAL WEB', 'EVENT HORIZON', 'SUPERNOVA'];
+            const label = document.getElementById('mode-text');
+            if(names[type]) {
+                label.innerText = names[type];
+                label.style.opacity = "0.3";
+                label.style.transform = "scale(1.05)";
+                setTimeout(() => { label.style.opacity = "0"; label.style.transform = "scale(1)"; }, 1500);
+            }
+            
+            for(let i=0; i<count; i++) {
+                const i3 = i * 3;
+                let x=0, y=0, z=0;
+                
+                if(type === 1) { // 1 Finger - LOTUS FLOWER
+                    const t = (i / count) * Math.PI * 20;
+                    const r = 50 * Math.sin(2.5 * t);
+                    x = r * Math.cos(t);
+                    y = r * Math.sin(t);
+                    z = (i/count) * 20;
+                } else if(type === 2) { // 2 Fingers - DNA
+                    const t = (i/count) * Math.PI * 15;
+                    const r = 30;
+                    const side = i % 2 === 0 ? 1 : -1;
+                    x = r * Math.cos(t) * side;
+                    y = (i/count - 0.5) * 180;
+                    z = r * Math.sin(t) * side;
+                } else if(type === 3) { // 3 Fingers - TRI-STAR
+                    const starIdx = i % 3;
+                    const r = 25 + Math.random() * 5;
+                    const phi = Math.random() * Math.PI * 2;
+                    const theta = Math.acos(2 * Math.random() - 1);
+                    const offX = starIdx === 0 ? -60 : (starIdx === 1 ? 60 : 0);
+                    const offY = starIdx === 2 ? 60 : -20;
+                    x = r * Math.sin(theta) * Math.cos(phi) + offX;
+                    y = r * Math.sin(theta) * Math.sin(phi) + offY;
+                    z = r * Math.cos(theta);
+                } else if(type === 4) { // 4 Fingers - HYPERCUBE
+                    x = (Math.random() - 0.5) * 100;
+                    y = (Math.random() - 0.5) * 100;
+                    z = (Math.random() - 0.5) * 100;
+                    if(i % 4 === 0) x = x > 0 ? 50 : -50;
+                    if(i % 4 === 1) y = y > 0 ? 50 : -50;
+                    if(i % 4 === 2) z = z > 0 ? 50 : -50;
+                } else if(type === 5) { // 5 Fingers - HEART
+                    const t = Math.random() * Math.PI * 2;
+                    x = 3.8 * (16 * Math.pow(Math.sin(t), 3));
+                    y = 3.8 * (13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
+                    z = (Math.random() - 0.5) * 45 * Math.sin(t); 
+                } else if(type === 6) { // 6 Fingers - SATURN
+                    const isRing = i % 3 === 0;
+                    if(isRing) {
+                        const r = 70 + Math.random() * 30;
+                        const t = Math.random() * Math.PI * 2;
+                        x = r * Math.cos(t); y = (Math.random()-0.5)*5; z = r * Math.sin(t);
+                    } else {
+                        const r = 40;
+                        const p = Math.acos(-1+(2*i)/count); const t = Math.sqrt(count*Math.PI)*p;
+                        x=r*Math.cos(t)*Math.sin(p); y=r*Math.sin(t)*Math.sin(p); z=r*Math.cos(p);
+                    }
+                } else if(type === 7) { // 7 Fingers - GALAXY
+                    const r = (i/count) * 140;
+                    const t = (i/count) * Math.PI * 18;
+                    x = r * Math.cos(t); y = (Math.random()-0.5)*15; z = r * Math.sin(t);
+                } else if(type === 8) { // 8 Fingers - NEURAL
+                    x = (Math.random()-0.5) * 150; y = (Math.random()-0.5) * 150; z = (Math.random()-0.5) * 150;
+                    if(i % 10 === 0) { x *= 1.2; y *= 1.2; z *= 1.2; }
+                } else if(type === 9) { // 9 Fingers - VOID
+                    const r = 100 + Math.random() * 50;
+                    const t = Math.random() * Math.PI * 2;
+                    x = r * Math.cos(t); y = r * Math.sin(t); z = (Math.random()-0.5) * 200;
+                    tar[i3]=0; tar[i3+1]=0; tar[i3+2]=0; // Pull to center
+                } else if(type === 10) { // 10 Fingers - SUPERNOVA
+                    const r = 200 + Math.random() * 300;
+                    const phi = Math.random() * Math.PI * 2;
+                    const theta = Math.acos(2 * Math.random() - 1);
+                    x = r * Math.sin(theta) * Math.cos(phi);
+                    y = r * Math.sin(theta) * Math.sin(phi);
+                    z = r * Math.cos(theta);
+                } else { // Ambient
+                    x = (Math.random()-0.5)*300; y = (Math.random()-0.5)*300; z = (Math.random()-0.5)*300;
+                }
+                tar[i3]=x; tar[i3+1]=y; tar[i3+2]=z;
+            }
+        }
+
+        let handPos = new THREE.Vector3();
+        const hands = new Hands({locateFile: (f) => `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${f}`});
+        hands.setOptions({maxNumHands: 2, minDetectionConfidence: 0.8, modelComplexity: 1});
+        
+        hands.onResults(res => {
+            let total = 0;
+            if(res.multiHandLandmarks?.length) {
+                let sumX=0, sumY=0;
+                res.multiHandLandmarks.forEach((lm, index) => {
+                    const up = [8, 12, 16, 20].filter(idx => lm[idx].y < lm[idx-2].y).length;
+                    const isRight = res.multiHandedness[index].label === 'Right';
+                    const thumb = isRight ? (lm[4].x < lm[3].x) : (lm[4].x > lm[3].x);
+                    total += up + (thumb ? 1 : 0);
+                    sumX += (lm[9].x-0.5)*240; sumY += -(lm[9].y-0.5)*160;
+                });
+                handPos.set(sumX/res.multiHandLandmarks.length, sumY/res.multiHandLandmarks.length, 0);
+            }
+            if(total !== parseInt(document.body.dataset.lc)) {
+                morph(total); document.body.dataset.lc = total;
+            }
+        });
+
+        const v = document.getElementById('v');
+        const cam = new Camera(v, {onFrame: async () => await hands.send({image: v})});
+
+        document.getElementById('start-btn').onclick = () => {
+            document.getElementById('overlay').style.opacity = '0';
+            setTimeout(() => document.getElementById('overlay').style.display = 'none', 1500);
+            cam.start();
+        };
+
+        function animate() {
+            requestAnimationFrame(animate);
+            const time = Date.now()*0.001;
+            const p = geo.attributes.position.array;
+            const c = geo.attributes.color.array;
+            points.position.lerp(handPos, 0.08);
+            
+            const countVal = document.body.dataset.lc;
+            
+            for(let i=0; i<count; i++){
+                const i3=i*3;
+                let lerpSpeed = countVal == "10" ? 0.03 : 0.08;
+                p[i3] += (tar[i3] - p[i3]) * lerpSpeed + Math.sin(time + i*0.1)*0.04;
+                p[i3+1] += (tar[i3+1] - p[i3+1]) * lerpSpeed;
+                p[i3+2] += (tar[i3+2] - p[i3+2]) * lerpSpeed;
+                
+                const d = Math.sqrt(p[i3]**2 + p[i3+1]**2 + p[i3+2]**2);
+                
+                if(countVal == "5") { // Heart
+                    c[i3] = 0.9; c[i3+1] = 0.1; c[i3+2] = 0.3;
+                } else if(countVal == "1") { // Lotus
+                    c[i3] = 0.5 + Math.sin(time)*0.5; c[i3+1] = 0.9; c[i3+2] = 0.5;
+                } else { // Celestial Blue
+                    c[i3] = 0.1 + (d/250); c[i3+1] = 0.5 + Math.sin(time)*0.2; c[i3+2] = 0.9;
+                }
+            }
+            geo.attributes.position.needsUpdate = true;
+            geo.attributes.color.needsUpdate = true;
+            points.rotation.y += 0.002;
+            renderer.render(scene, camera);
+        }
+        animate();
+    </script>
+</body>
+</html>

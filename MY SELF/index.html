@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- MOBILE RESPONSIVE -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Arjun | Creative Developer</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- BOXICONS -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- PARTICLES & ENHANCED STYLING WITH MOBILE RESPONSIVENESS -->
+    <style>
+        #particles-canvas{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -3;
+            pointer-events: none;
+        }
+
+        /* Project Card Styling */
+        .project-showcase-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .project-showcase-card:hover {
+            border-color: rgba(138, 43, 226, 0.4);
+            box-shadow: 0 30px 60px rgba(138, 43, 226, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .project-card-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .project-header-flex {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+
+        .project-logo-wrapper {
+            width: 65px;
+            height: 65px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            flex-shrink: 0;
+        }
+
+        .project-logo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-title-area h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 6px;
+            letter-spacing: -0.5px;
+        }
+
+        .project-tech-badge {
+            display: inline-block;
+            padding: 5px 14px;
+            background: rgba(255, 152, 0, 0.1);
+            color: #ff9800;
+            border: 1px solid rgba(255, 152, 0, 0.2);
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .project-features-list {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .project-features-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .project-features-list li i {
+            color: #8a2be2;
+            font-size: 1.2rem;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        /* Social Icons Flex Wrap Fix */
+        .socials {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        /* Enhanced Gorgeous Contact Form Styling */
+        .contact-box {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.01)) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: 28px !important;
+            padding: 50px !important;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5) !important;
+            transition: all 0.4s ease;
+        }
+
+        .contact-box:hover {
+            border-color: rgba(138, 43, 226, 0.4) !important;
+            box-shadow: 0 35px 70px rgba(138, 43, 226, 0.15) !important;
+        }
+
+        .contact-box h2 {
+            font-size: 2.4rem !important;
+            font-family: 'Syne', sans-serif !important;
+            margin-bottom: 10px !important;
+        }
+
+        .contact-box p {
+            color: rgba(255, 255, 255, 0.65) !important;
+            margin-bottom: 30px !important;
+            font-size: 1.05rem !important;
+        }
+
+        .contact-form .input-group {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .contact-form input, 
+        .contact-form textarea {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.03) !important;
+            border: 1px solid rgba(255, 255, 255, 0.12) !important;
+            border-radius: 14px !important;
+            padding: 16px 20px !important;
+            color: #ffffff !important;
+            font-size: 1rem !important;
+            font-family: 'Manrope', sans-serif !important;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-form input:focus, 
+        .contact-form textarea:focus {
+            border-color: #8a2be2 !important;
+            background: rgba(138, 43, 226, 0.04) !important;
+            box-shadow: 0 0 15px rgba(138, 43, 226, 0.2);
+        }
+
+        .contact-form label {
+            position: absolute;
+            left: 20px;
+            top: 18px;
+            color: rgba(255, 255, 255, 0.4);
+            pointer-events: none;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .contact-form input:focus ~ label,
+        .contact-form input:valid ~ label,
+        .contact-form textarea:focus ~ label,
+        .contact-form textarea:valid ~ label {
+            top: -10px;
+            left: 15px;
+            font-size: 0.75rem;
+            background: #0b0b13;
+            padding: 0 6px;
+            color: #8a2be2;
+            font-weight: 600;
+        }
+
+        .contact-form button[type="submit"] {
+            width: 100%;
+            justify-content: center;
+            padding: 16px !important;
+            font-size: 1.05rem !important;
+            font-weight: 600;
+            border-radius: 14px !important;
+            background: linear-gradient(135deg, #8a2be2, #4a00e0);
+            border: none;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(138, 43, 226, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .contact-form button[type="submit"]:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(138, 43, 226, 0.6);
+        }
+
+        /* --- MOBILE RESPONSIVE OPTIMIZATIONS --- */
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 0 16px !important;
+            }
+
+            .section {
+                padding: 50px 0 !important;
+            }
+
+            .cards-wrapper, 
+            .hero-grid,
+            .stats-grid {
+                grid-template-columns: 1fr !important;
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .project-showcase-card {
+                padding: 20px !important;
+                border-radius: 18px;
+            }
+
+            .project-title-area h3, 
+            .project-header-flex h3 {
+                font-size: 1.3rem !important;
+            }
+
+            .contact-box {
+                padding: 25px 18px !important;
+                border-radius: 20px !important;
+            }
+
+            .contact-box h2 {
+                font-size: 1.8rem !important;
+            }
+
+            .giant-text {
+                font-size: 12vw !important;
+            }
+
+            .hero {
+                padding-top: 80px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- NOISE -->
+    <div class="noise-overlay"></div>
+    <div class="vignette"></div>
+
+    <!-- BLOBS -->
+    <div class="blob-cont">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- PRELOADER -->
+    <div class="preloader">
+        <div class="loader-content">
+            <span class="loader-text">Arjun.</span>
+            <div class="loader-bar"></div>
+        </div>
+    </div>
+
+    <!-- CURSOR -->
+    <div class="cursor-dot" data-cursor-dot></div>
+    <div class="cursor-outline" data-cursor-outline></div>
+
+    <!-- PARTICLES -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- HEADER -->
+    <header class="glass-header" id="header">
+
+        <nav class="nav container">
+
+            <a href="#" class="logo hacker-effect" data-value="ARJUN.">
+                ARJUN.
+            </a>
+
+            <!-- NAV MENU -->
+            <div class="nav-menu" id="nav-menu">
+
+                <a href="#home" class="nav-link active-link">
+                    Home
+                </a>
+
+                <a href="#about" class="nav-link">
+                    About
+                </a>
+
+                <a href="#skills" class="nav-link">
+                    Expertise
+                </a>
+
+                <a href="#projects" class="nav-link">
+                    Projects
+                </a>
+
+                <a href="#contact" class="nav-link contact-btn magnetic">
+                    Let's Talk
+                </a>
+
+                <!-- CLOSE MENU -->
+                <div class="close-menu" id="nav-close">
+                    <i class='bx bx-x'></i>
+                </div>
+
+            </div>
+
+            <!-- TOGGLE -->
+            <div class="toggle-menu" id="nav-toggle">
+                <i class='bx bx-menu-alt-right'></i>
+            </div>
+
+        </nav>
+
+        <div class="scroll-progress"></div>
+
+    </header>
+
+    <!-- COVER PAGE -->
+    <section class="cover-page">
+
+        <div class="cover-content">
+
+            <h1 class="giant-text parallax" data-speed="0.2">
+                PORTFOLIO
+            </h1>
+
+            <p class="cover-subtitle parallax" data-speed="0.1">
+                Created by Arjun
+            </p>
+
+            <div class="scroll-indicator-wrapper">
+
+                <div class="mouse-icon"></div>
+
+                <span>
+                    Scroll to Explore
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+
+        <div class="container hero-grid">
+
+            <div class="hero-text reveal-group">
+
+                <div class="badge reveal-item">
+                    Available for work
+                </div>
+
+                <h1 class="reveal-item">
+                    Creative <br>
+
+                    <span class="gradient-text hacker-effect" data-value="Developer">
+                        Developer
+                    </span>
+                </h1>
+
+                <p class="typing-wrapper reveal-item">
+                    Crafting
+                    <span class="typewriter"></span>
+                    <span class="cursor">|</span>
+                </p>
+
+                <!-- BUTTONS -->
+                <div class="hero-btns reveal-item">
+
+                    <a href="#projects" class="btn primary magnetic">
+                        View Projects
+                        <i class='bx bx-right-arrow-alt'></i>
+                    </a>
+
+                    <a href="#contact" class="btn secondary magnetic">
+                        Contact Me
+                    </a>
+
+                </div>
+
+                <!-- SOCIALS -->
+                <div class="socials reveal-item">
+
+                    <a href="https://github.com/" target="_blank" class="magnetic" title="GitHub">
+                        <i class='bx bxl-github'></i>
+                    </a>
+
+                    <a href="https://www.linkedin.com/feed/" target="_blank" class="magnetic" title="LinkedIn">
+                        <i class='bx bxl-linkedin'></i>
+                    </a>
+
+                    <a href="https://www.instagram.com/m.r____r.e.d.d.y/" target="_blank" class="magnetic" title="Instagram">
+                        <i class='bx bxl-instagram'></i>
+                    </a>
+
+                    <a href="https://www.threads.com/@m.r____r.e.d.d.y" target="_blank" class="magnetic" title="Threads">
+                        <i class='bx bxs-quote-single-right'></i>
+                    </a>
+
+                    <a href="https://x.com/ArjunDurgam28" target="_blank" class="magnetic" title="X (Twitter)">
+                        <i class='bx bxl-twitter'></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- IMAGE -->
+            <div class="hero-visual reveal-item" id="tilt-card">
+
+                <div class="glass-card profile-card">
+
+                    <img
+                        src="my_pic.jpg"
+                        alt="Arjun"
+                        class="profile-img"
+                        loading="lazy"
+                    >
+
+                    <div class="glow-effect"></div>
+
+                    <div class="floating-badge badge-1">
+                        <i class='bx bx-code-alt'></i>
+                        Coder
+                    </div>
+
+                    <div class="floating-badge badge-2">
+                        <i class='bx bxs-palette'></i>
+                        Artist
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee-strip">
+
+        <div class="marquee-content">
+
+            <span class="outline">INTERACTIVE</span>
+            <span class="filled">DEVELOPER</span>
+
+            <span class="outline">CREATIVE</span>
+            <span class="filled">DESIGNER</span>
+
+            <span class="outline">MODERN</span>
+            <span class="filled">SOLUTIONS</span>
+
+        </div>
+
+    </div>
+
+    <!-- ABOUT -->
+    <section class="about section" id="about">
+
+        <div class="container">
+
+            <h2 class="section-title reveal">
+                My <span class="gradient-text">Narrative</span>
+            </h2>
+
+            <div class="glass-card reveal about-card">
+
+                <div class="about-content">
+
+                    <p class="big-p">
+                        I bridge the gap between
+                        <span class="highlight">Engineering</span>
+                        and
+                        <span class="highlight">Art</span>.
+                    </p>
+
+                    <p>
+                        With a focus on interaction and typography,
+                        I build websites that feel alive.
+                        I don't just write code;
+                        I orchestrate pixels to create memorable digital journeys.
+                    </p>
+
+                    <div class="stats-grid">
+
+                        <div class="stat">
+                            <h3>01+</h3>
+                            <p>Years</p>
+                        </div>
+
+                        <div class="stat">
+                            <h3>5+</h3>
+                            <p>Projects</p>
+                        </div>
+
+                        <div class="stat">
+                            <h3>100%</h3>
+                            <p>Passion</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- SKILLS -->
+    <section class="skills section" id="skills">
+
+        <div class="container">
+
+            <h2 class="section-title reveal">
+                Tech <span class="gradient-text">Arsenal</span>
+            </h2>
+
+            <div class="cards-wrapper" id="cards-wrapper">
+
+                <!-- Programming Languages -->
+                <div class="spotlight-card reveal">
+                    <div class="spotlight-content">
+                        <i class='bx bxl-java skill-icon' style="color:#f89820;"></i>
+                        <h3>Java</h3>
+                    </div>
+                </div>
+
+                <div class="spotlight-card reveal">
+                    <div class="spotlight-content">
+                        <i class='bx bx-code skill-icon' style="color:#00599c;"></i>
+                        <h3>C / C++</h3>
+                    </div>
+                </div>
+
+                <div class="spotlight-card reveal">
+                    <div class="spotlight-content">
+                        <i class='bx bxl-python skill-icon' style="color:#306998;"></i>
+                        <h3>Python</h3>
+                    </div>
+                </div>
+
+                <div class="spotlight-card reveal">
+                    <div class="spotlight-content">
+                        <i class='bx bxl-javascript skill-icon' style="color:#f0db4f;"></i>
+                        <h3>JavaScript</h3>
+                    </div>
+                </div>
+
+                <!-- Web Development -->
+                <div class="spotlight-card reveal">
+                    <div class="spotlight-content">
+                        <i class='bx bxl-html5 skill-icon' style="color:#e34c26;"></i>
+                        <h3>HTML5</h3>
+                    </div>
+                </div>
+
+                <div class="spotlight-card reveal">
+                    <div class="spotlight-content">
+                        <i class='bx bxl-css3 skill-icon' style="color:#264de4;"></i>
+                        <h3>CSS3 & Responsive</h3>
+                    </div>
+                </div>
+
+                <!-- Database -->
+                <div class="spotlight-card reveal">
+                    <div class="spotlight-content">
+                        <i class='bx bxs-data skill-icon' style="color:#4DB33D;"></i>
+                        <h3>MongoDB</h3>
+                    </div>
+                </div>
+
+                <!-- AI / ML -->
+                <div class="spotlight-card reveal">
+                    <div class="spotlight-content">
+                        <i class='bx bx-brain skill-icon' style="color:#ff6f61;"></i>
+                        <h3>LangChain & PyTorch</h3>
+                    </div>
+                </div>
+
+                <div class="spotlight-card reveal">
+                    <div class="spotlight-content">
+                        <i class='bx bx-line-chart skill-icon' style="color:#3776AB;"></i>
+                        <h3>NumPy, Pandas, Scikit-Learn</h3>
+                    </div>
+                </div>
+
+                <div class="spotlight-card reveal">
+                    <div class="spotlight-content">
+                        <i class='bx bx-image skill-icon' style="color:#5cacee;"></i>
+                        <h3>OpenCV & Matplotlib</h3>
+                    </div>
+                </div>
+
+                <!-- Tools & Platforms -->
+                <div class="spotlight-card reveal">
+                    <div class="spotlight-content">
+                        <i class='bx bxl-git skill-icon' style="color:#f34f29;"></i>
+                        <h3>Git & GitHub</h3>
+                    </div>
+                </div>
+
+                <div class="spotlight-card reveal">
+                    <div class="spotlight-content">
+                        <i class='bx bx-cog skill-icon' style="color:#ff5722;"></i>
+                        <h3>N8N Automation</h3>
+                    </div>
+                </div>
+
+                <!-- Core Subjects -->
+                <div class="spotlight-card reveal">
+                    <div class="spotlight-content">
+                        <i class='bx bx-sitemap skill-icon' style="color:#00bcd4;"></i>
+                        <h3>DSA & OOP</h3>
+                    </div>
+                </div>
+
+                <div class="spotlight-card reveal">
+                    <div class="spotlight-content">
+                        <i class='bx bx-chip skill-icon' style="color:#9c27b0;"></i>
+                        <h3>Machine Learning</h3>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="projects section" id="projects">
+
+        <div class="container">
+
+            <h2 class="section-title reveal">
+                My <span class="gradient-text">Projects</span>
+            </h2>
+
+            <div class="cards-wrapper">
+
+                <!-- Campuskart Card -->
+                <div class="project-showcase-card reveal" style="grid-column: span 2;">
+                    <div class="project-card-content">
+                        
+                        <div class="project-header-flex">
+                            <div class="project-logo-wrapper">
+                                <!-- Put your logo image file in the same folder and name it campuskart_logo.png -->
+                                <img src="campuskart_logo.png" alt="CampusKart Logo" class="project-logo" onerror="this.style.display='none'">
+                            </div>
+                            <div>
+                                <h3>CampusKart – IIT Jodhpur Marketplace App</h3>
+                                <span class="project-tech-badge">Java • MongoDB • Full-Stack Android</span>
+                            </div>
+                        </div>
+
+                        <ul class="project-features-list">
+                            <li>
+                                <i class='bx bx-check-circle'></i>
+                                <span>Developed a full-stack Android marketplace application for IIT Jodhpur students using Java and MongoDB.</span>
+                            </li>
+                            <li>
+                                <i class='bx bx-check-circle'></i>
+                                <span>Implemented OTP authentication, product listings, search, category filters, wishlist, and profile management.</span>
+                            </li>
+                            <li>
+                                <i class='bx bx-check-circle'></i>
+                                <span>Integrated WhatsApp chat and direct calling functionality for buyer-seller communication.</span>
+                            </li>
+                            <li>
+                                <i class='bx bx-check-circle'></i>
+                                <span>Achieved <strong>100+ active users</strong> within the IIT Jodhpur campus community.</span>
+                            </li>
+                        </ul>
+                        
+                        <a href="https://mahendraarjundurgam-byte.github.io/campuskart-iitj/" target="_blank" rel="noopener noreferrer" class="btn primary magnetic" style="padding: 12px 24px; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 8px; margin-top: 10px;">
+                            Visit Live Website
+                            <i class='bx bx-external-link'></i>
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact section" id="contact">
+
+        <div class="container contact-container">
+
+            <div class="glass-card contact-box reveal">
+
+                <h2>
+                    Ready to
+                    <span class="gradient-text">Collaborate?</span>
+                </h2>
+
+                <p>
+                    Let's build something future-proof.
+                </p>
+
+                <!-- FORM WITH WORKING ACCESS KEY -->
+                <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+
+                    <!-- Direct access key placement -->
+                    <input type="hidden" name="access_key" value="8fff0577-6ada-44e5-bc73-98fe61f6dafd">
+
+                    <div class="input-group">
+                        <input type="text" name="name" required>
+                        <label>Your Name</label>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="email" name="email" required>
+                        <label>Your Email</label>
+                    </div>
+
+                    <div class="input-group">
+                        <textarea name="message" rows="4" required></textarea>
+                        <label>Tell me about the project</label>
+                    </div>
+
+                    <!-- Spam protection honey pot -->
+                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+                    <button type="submit" class="btn primary magnetic">
+                        Send Message
+                        <i class='bx bx-send'></i>
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>
+            &copy; 2026 Arjun.
+            <span style="opacity:0.5">
+                Built with Passion.
+            </span>
+        </p>
+    </footer>
+
+    <!-- SCRIPT -->
+    <script src="script.js"></script>
+
+    <!-- MOBILE MENU -->
+    <script>
+
+        const navMenu = document.getElementById('nav-menu');
+        const navToggle = document.getElementById('nav-toggle');
+        const navClose = document.getElementById('nav-close');
+
+        if(navToggle){
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.add('show');
+            });
+        }
+
+        if(navClose){
+            navClose.addEventListener('click', () => {
+                navMenu.classList.remove('show');
+            });
+        }
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('show');
+            });
+        });
+
+    </script>
+
+</body>
+</html>

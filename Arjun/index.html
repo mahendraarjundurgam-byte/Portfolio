@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Flipbook Resume</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="scene">
+        <div class="book" id="book">
+            <div class="paper" id="p1" style="z-index: 3;">
+                <div class="front">
+                    <div class="profile-section">
+                        <div class="avatar-wrapper">
+                            <img src="my_pic.jpg" alt="Profile">
+                        </div>
+                        <h1 class="name">Arjun Durgam</h1>
+                        <h3 class="role">Software Developer</h3>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                        <p class="intro-text">Crafting digital experiences with code and creativity.</p>
+                        <div class="action-btns">
+                            <button class="btn primary">Resume</button>
+                            <button class="btn secondary">Hire Me</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="back">
+                    <div class="page-content">
+                        <h2 class="title">Education</h2>
+                        <div class="timeline">
+                            <div class="step">
+                                <p class="year">2021-2025</p>
+                                <h4>B.Tech in CSE</h4>
+                                <p>XYZ University</p>
+                            </div>
+                            <div class="step">
+                                <p class="year">2019</p>
+                                <h4>Secondary School</h4>
+                                <p>CBSE Board</p>
+                            </div>
+                        </div>
+                        <span class="page-number">1</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="paper" id="p2" style="z-index: 2;">
+                <div class="front">
+                    <div class="page-content">
+                        <h2 class="title">My Services</h2>
+                        <div class="services-grid">
+                            <div class="s-card">
+                                <i class="fas fa-laptop-code"></i>
+                                <h4>Web Dev</h4>
+                            </div>
+                            <div class="s-card">
+                                <i class="fas fa-database"></i>
+                                <h4>Database</h4>
+                            </div>
+                        </div>
+                        <span class="page-number">2</span>
+                    </div>
+                </div>
+                <div class="back">
+                    <div class="page-content">
+                        <h2 class="title">Technical Skills</h2>
+                        <div class="skills-list">
+                            <div class="skill-tag">Python</div>
+                            <div class="skill-tag">JavaScript</div>
+                            <div class="skill-tag">React</div>
+                            <div class="skill-tag">Node.js</div>
+                        </div>
+                        <span class="page-number">3</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button id="prevBtn"><i class="fas fa-arrow-left"></i></button>
+        <button id="nextBtn"><i class="fas fa-arrow-right"></i></button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
